@@ -1,0 +1,20 @@
+@import "../../../shared/colors";
+
+.container-fluid {
+  background-color: $semiWhite;
+
+  .container {
+    padding: 0;
+
+    .alert {
+      margin-bottom: 0;
+      padding: 0 10px 0 10px;
+      opacity: 0;
+      transition: opacity 1s ease-out;
+    }
+
+    .alert.active {
+      opacity: 1;
+    }
+  }
+}

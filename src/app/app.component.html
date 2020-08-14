@@ -1,0 +1,15 @@
+<header>
+  <shared-navbar></shared-navbar>
+  <users-info *ngIf="isLogged"></users-info>
+</header>
+<main [@routeAnimations]="getState(o)" [hidden]="!isLogged">
+  <router-outlet #o="outlet"></router-outlet>
+</main>
+<main *ngIf="!isLogged" id="user-not-found">
+  <img src="assets/exclamation-circle.svg"/>
+  <p class="text-center">Usuario no encontrado</p>
+  <button class="btn btn-success" (click)="onClickReintentar()">Reintentar</button>
+</main>
+<footer>
+  <shared-footer></shared-footer>
+</footer>

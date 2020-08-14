@@ -1,0 +1,71 @@
+<section id="containerEventCreate">
+  <button id="btn-create" class="btn btn-outline-success" (click)="openModal()">
+    <img id="calendar-add" src="assets/calendar-add.svg"/>
+    <br>Nuevo evento
+  </button>
+
+  <section class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':modalDisplay}">
+    <div class="mt-2 modal-dialog">
+      <div class="modal-content">
+        <header class="modal-header">
+          <h5 class="modal-title">Nuevo evento</h5>
+          <button type="button" class="close" (click)="onCloseHandled()" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </header>
+        <section class="modal-body">
+          <!-- Formulario -->
+          <form (ngSubmit)="createEvent(newEvent)" #formEvento="ngForm">
+            <div class="form-group">
+              <label for="name">Nombre</label>
+              <input class="form-control" id="name" minlength="3" maxlength="50" #nameModel="ngModel"
+                     type="text" name="name" placeholder="Inserta el nombre del evento"
+                     [(ngModel)]="newEvent.name" required [ngClass]="validClasses(nameModel, 'is-valid', 'is-invalid')">
+
+              <div class="invalid-feedback" *ngIf="nameModel.errors && nameModel.errors.required">
+                Debes proporcionar un nombre
+              </div>
+              <div class="invalid-feedback" *ngIf="nameModel.errors && nameModel.errors.minlength">
+                Al campo le faltan al menos
+                {{nameModel.errors.minlength.requiredLength - nameModel.errors.minlength.actualLength}}
+                carácteres
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="description">Descripción</label>
+              <textarea class="form-control" id="description" name="description" type="text" maxlength="255"
+                        placeholder="Inserta la descripción del evento" [(ngModel)]="newEvent.description"
+                        required #descModel="ngModel" rows="6"
+                        [ngClass]="validClasses(descModel, 'is-valid', 'is-invalid')"></textarea>
+              <div class="invalid-feedback" *ngIf="descModel.errors">
+                Debes proporcionar una descripción
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="date">Fecha y hora</label>
+              <input class="form-control" type="datetime-local" min="{{dateTomorrow | date:'yyyy-MM-ddTHH:mm'}}"
+                     name="date"
+                     id="date"
+                     [(ngModel)]="newEvent.eventDate" [ngClass]="validClasses(dateModel, 'is-valid', 'is-invalid')"
+                     #dateModel="ngModel" required>
+
+              <div class="invalid-feedback" *ngIf="dateModel.errors && dateModel.errors.required">
+                Debes proporcionar una fecha
+              </div>
+              <div class="invalid-feedback" *ngIf="dateModel.errors && dateModel.errors.minDate">
+                La fecha debe ser como mínimo {{dateTomorrow | date:'yyyy-MM-ddTHH:mm'}}
+              </div>
+            </div>
+            <footer class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="onCloseHandled()">Cancelar
+              </button>
+              <button type="submit" class="btn btn-success">Aceptar</button>
+            </footer>
+          </form>
+        </section>
+      </div>
+    </div>
+  </section>
+</section>

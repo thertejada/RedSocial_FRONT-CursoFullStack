@@ -1,0 +1,27 @@
+<nav class="container-fluid navbar navbar-expand-md navbar-dark fixed-top">
+  <section class="container">
+    <img src="../../../assets/logo.png" alt="Logo" routerLink="/home">
+    <span class="d-block d-md-none collapse-link">{{navbarActivated|navbarName}}</span>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTarget"
+            aria-controls="navbarTarget" aria-expanded="false" aria-label="Toggle navigation"
+            (click)="isShown = !isShown">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTarget" [ngClass]="{ 'show': isShown }">
+      <div class="navbar-nav">
+        <a [ngClass]="{selected: navbarActivated == 1}" class="nav-item nav-link" routerLink="/home" (click)="isShown = !isShown">
+          Inicio
+        </a>
+        <a [ngClass]="{selected: navbarActivated == 2}" class="nav-item nav-link" routerLink="/profile" (click)="isShown = !isShown">
+          Mi perfil
+        </a>
+        <a [ngClass]="{selected: navbarActivated == 3}" class="nav-item nav-link" routerLink="/friends" (click)="isShown = !isShown">
+          Mis amigos
+        </a>
+        <a [ngClass]="{selected: navbarActivated == 4}" class="nav-item nav-link" routerLink="/events" (click)="isShown = !isShown">
+          Eventos
+        </a>
+      </div>
+    </div>
+  </section>
+</nav>

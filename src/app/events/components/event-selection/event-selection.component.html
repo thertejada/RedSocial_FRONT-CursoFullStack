@@ -1,0 +1,30 @@
+<section class="pt-2" id="containerEventSelection">
+  <section class="row align-items-center pb-2">
+    <div class="col-12 col-md-4 text-center text-md-left mb-2 mb-md-0" id="create">
+      <event-create></event-create>
+    </div>
+    <div class="col-12 col-md-4 text-center" id="dropdown">
+      <div class="dropdown">
+        <button class="dropbtn">
+          <span *ngIf="btnActivated==1">Mis eventos</span>
+          <span *ngIf="btnActivated==2">Eventos de amigos</span>
+          <span *ngIf="btnActivated==3">Eventos a los que asistiré</span>
+          <span class="float-right symbol">▼</span>
+        </button>
+        <div class="dropdown-content">
+          <a (click)="myEvents()">Mis eventos</a>
+          <a (click)="friendsEvents()">Eventos de amigos</a>
+          <a (click)="eventsYesAssistance()">Eventos a los que asistiré</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-4 text-center text-md-right" id="switch">
+      Ocultar finalizados<br>
+      <label class="switch">
+        <input type="checkbox" (click)="updateBoolean()">
+        <span class="slider round"></span>
+      </label>
+    </div>
+  </section>
+  <event-list></event-list>
+</section>

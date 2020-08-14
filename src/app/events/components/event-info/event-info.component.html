@@ -1,0 +1,67 @@
+<section id="containerEventInfo" [ngClass]="{'active':event != undefined}">
+  <article class="card" *ngIf="event!= undefined">
+    <header><h5 class="text-center text-wrap">{{event.name|uppercase}}</h5></header>
+    <div class="row text-center">
+      <div class="col-6">
+        <img src="assets/calendar.svg" alt="Fecha"/>
+        <br>{{event.eventDate|dateFormat}}
+      </div>
+      <div class="col-6">
+        <img src="assets/clock.svg" alt="Hora"/>
+        <br>{{event.eventDate|timeFormat}}
+      </div>
+    </div>
+    <div class="text-center">
+      <div *ngIf="btnActivated !=1">
+        <br>
+        <button class="btn btn-success" *ngIf="getMyAssistance(event).state.toString()!='YES'"
+                (click)="createYesAssistance(event)" [disabled]="event.state.toString()=='PASSED'">
+          Asistir
+        </button>
+        <button class="btn btn-danger" *ngIf="getMyAssistance(event).state.toString()=='YES'"
+                (click)="createNotAssistance(event)" [disabled]="event.state.toString()=='PASSED'">
+          Cancelar asistencia
+        </button>
+        <br>
+      </div>
+    </div>
+    <br><span class="text-wrap">
+      <img src="assets/comment.svg" class="pr-1 pb-1"/>Descripción:
+      <textarea id="desc" readonly [rows]="event.description|CountSizeTextarea">{{event.description}}</textarea>
+    </span>
+    <span *ngIf="btnActivated!=1" class="mb-1 text-wrap">
+      <img src="assets/user.svg" class="pr-1 pb-1"/>{{event.user.name}} {{event.user.surname}}
+      <small> @{{event.user.user}}</small>
+    </span>
+    <span>
+      <img src="assets/calendar.svg" class="pr-1 pb-1"/>{{event.state.toString()|eventState}}
+    </span>
+
+    <section class="pt-2">
+      <div *ngIf="event.assistances==undefined || event.assistances.length == 0 || allAssistanceAreStateNot()">
+        <h6 class="text-center">NO HAY ASISTENTES</h6>
+      </div>
+      <div *ngIf="event.assistances!=undefined && event.assistances.length != 0 && !allAssistanceAreStateNot()">
+        <h6><img src="assets/user.svg" alt="Usuario" class="pr-1 pb-1"/>Asistentes:</h6>
+        <div class="d-flex flex-wrap">
+          <article *ngFor="let assistance of event.assistances" class="col-6 pl-1 pr-1 pb-1">
+            <div class="card card-user mb-1 text-wrap" *ngIf="assistance.state.toString()=='YES'">
+              <div class="row">
+                <div class="col-8">
+                  {{assistance.user.name}} {{assistance.user.surname}}
+                  <small>@{{assistance.user.user}}</small>
+                </div>
+                <div class="col-4">
+                  <img [src]="assistance.user|userImage" alt="Avatar"/>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </article>
+</section>
+<section id="containerEventInfoNotSelected" *ngIf="event== undefined">
+  <img src="assets/hand-left.svg"/>
+</section>

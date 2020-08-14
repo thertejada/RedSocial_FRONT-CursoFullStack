@@ -1,0 +1,59 @@
+@import "../../../shared/colors";
+
+#containerUserFullInfo {
+  border: 2px solid $greenLight;
+  border-radius: 12px;
+  background-color: white;
+
+  hr {
+    margin-top: 0.2em;
+    margin-bottom: 0.2em;
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  li{
+    padding: 0 0 0 20px;
+  }
+
+  img {
+    width: 2em;
+    height: 2em;
+  }
+
+  h6 {
+    font-weight: bold;
+    color: $greenLight;
+    margin-bottom: 0;
+  }
+
+  button {
+    background-color: $greenLight3;
+    color: white;
+    float: right;
+
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+  }
+
+  button:hover {
+
+  }
+
+  button:hover, button:focus, button:active {
+    background-color: $greenLight2;
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+}
+
+.modal {
+  background: rgba(0, 0, 0, .5)
+}

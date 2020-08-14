@@ -1,0 +1,18 @@
+@import "../colors";
+
+section {
+  background-color: $greenBlack;
+  color: white;
+  font-size: 0.9em;
+
+  img {
+    max-width: 6em;
+    max-height: 3.5em;
+  }
+
+  #ft-name {
+    color: $greenLight2;
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+}

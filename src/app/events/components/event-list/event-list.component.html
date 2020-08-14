@@ -1,0 +1,38 @@
+<section class="row">
+  <section id="containerEventList" class="col-12 col-lg-6 mb-2">
+    <div class="card-deck">
+      <div *ngIf="events !== undefined">
+        <div *ngIf="events.length == 0">
+          <h5 class="text-center pt-4">NO HAY EVENTOS</h5>
+        </div>
+        <div *ngIf="events.length != 0">
+          <header><h6 class="text-center pt-2">Eventos</h6></header>
+          <article *ngFor="let event of events" (click)="onClickEvent(event)" class="pt-0 pb-2">
+            <div class="card">
+              <header><h5 class="text-center text-wrap">{{event.name|uppercase}}</h5></header>
+              <div class="row text-center date">
+                <div class="col-6 text-wrap">
+                  <img src="assets/calendar.svg" alt="Fecha"/>
+                  <br>{{event.eventDate|dateFormat}}
+                </div>
+                <div class="col-6">
+                  <img src="assets/clock.svg" alt="Hora"/>
+                  <br>{{event.eventDate|timeFormat}}
+                </div>
+              </div>
+              <br>
+              <span *ngIf="btnActivated!=1" class="mb-1">
+                <img src="assets/user.svg" alt="Usuario" class="pr-1 pb-1"/>{{event.user.name}} {{event.user.surname}}
+              </span>
+              <footer class="pt-5 pt-lg-0">
+                <img src="assets/info.svg" alt="Estado" class="pr-1 pb-1"/>{{event.state.toString()|eventState}}
+              </footer>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+  <event-info class="col-12 col-lg-6"></event-info>
+</section>
+

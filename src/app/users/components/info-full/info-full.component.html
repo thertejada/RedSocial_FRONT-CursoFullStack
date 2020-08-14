@@ -1,0 +1,57 @@
+<section id="containerUserFullInfo" class="p-2">
+  <button type="button" class="btn" (click)="openModal()">Editar</button>
+  <article class="row">
+    <div class="col-12">
+      <h6>Usuario:</h6>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">@{{user.user}}</li>
+      </ul>
+      <hr>
+      <h6>Nombre:</h6>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">{{user.name}}</li>
+      </ul>
+      <hr>
+      <h6>Apellidos:</h6>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">{{user.surname}}</li>
+      </ul>
+      <hr>
+      <h6>Fecha de nacimiento:</h6>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">{{user.birthDate|dateFormat}}</li>
+      </ul>
+      <hr>
+      <h6>Registrado desde:</h6>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">{{user.startDate|dateFormat}}</li>
+      </ul>
+    </div>
+  </article>
+</section>
+<section class="modal" tabindex="-1" role="dialog" [ngStyle]="{'display':modalDisplay}">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <header><h5 class="modal-title" id="exampleModalLabel">Editar</h5></header>
+        <button type="button" class="close" (click)="onCloseHandled()" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Apellidos:</label>
+            <input [(ngModel)]="userToUpdate.surname" [value]="userToUpdate.surname"
+                   [ngModelOptions]="{standalone: true}" type="text" class="form-control" id="recipient-name">
+          </div>
+        </form>
+      </div>
+      <footer class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="onCloseHandled()">Cancelar
+        </button>
+        <button type="button" class="btn btn-success" (click)="onSubmitEdit()">Aceptar</button>
+      </footer>
+    </div>
+  </div>
+</section>

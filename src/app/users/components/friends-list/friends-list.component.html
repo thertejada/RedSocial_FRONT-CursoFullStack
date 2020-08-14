@@ -1,0 +1,64 @@
+<section id="friendListContainer" class="p-2 mb-2">
+  <header><h6 class="text-center">Usuarios</h6></header>
+  <section class="card-deck">
+    <div *ngIf="myRelations == undefined || myRelations.length==0">
+      <h6 class="text-center pt-3">No tienes amigos o solicitudes pendientes</h6>
+    </div>
+    <div *ngIf="myRelations != undefined && myRelations.length!=0">
+      <div class="row">
+        <article *ngFor="let relation of myRelations" class="col-12 mb-2">
+          <div class="card">
+            <div class="card-body pb-2" (click)="onClickUserRelation(relation)">
+              <div class="row">
+                <div class="col-3 imgContent">
+                  <img class="img-thumbnail img-fluid" [src]="relation.userFriend|userImage" alt="Avatar"/>
+                </div>
+                <div class="col-9 cardContent">
+                  <header>
+                    <h6 class="card-title text-wrap">
+                      {{relation.userFriend.name}} {{relation.userFriend.surname}}
+                      <br><small>@{{relation.userFriend.user}}</small>
+                    </h6>
+                  </header>
+                  <section>
+                    <img *ngIf="relationType.get(relation.userFriend.user)=='FRIEND'"
+                         src="assets/user-relation-status/user-friend.svg" alt=""/>
+                    <img *ngIf="relationType.get(relation.userFriend.user)=='PENDING'"
+                         src="assets/user-relation-status/user-pending.svg" alt=""/>
+                    <img *ngIf="relationType.get(relation.userFriend.user)=='PENDING_TO_ME'"
+                         src="assets/user-relation-status/user-pending-to-me.svg" alt=""/>
+                    <img *ngIf="relationType.get(relation.userFriend.user)=='NO_FRIEND'"
+                         src="assets/user-relation-status/user-no-friend.svg" alt=""/>
+                    <span class="info"
+                          *ngIf="relationType.get(relation.userFriend.user)=='PENDING'">Petición enviada</span>
+                    <span class="info" *ngIf="relationType.get(relation.userFriend.user)=='PENDING_TO_ME'">Petición recibida</span>
+                    <span class="info" *ngIf="relationType.get(relation.userFriend.user)=='FRIEND'">Amigo</span>
+                    <span class="info"
+                          *ngIf="relationType.get(relation.userFriend.user)=='NO_FRIEND'">Desconocido</span>
+                    <button
+                      *ngIf="relationType.get(relation.userFriend.user)!='NO_FRIEND'"
+                      type="button"
+                      class="btn btn-sm btn-danger float-right" (click)="deleteRelation(relation)">
+                      <span aria-hidden="true">Borrar</span>
+                    </button>
+                    <button
+                      *ngIf="relationType.get(relation.userFriend.user)=='NO_FRIEND'"
+                      type="button" class="btn btn-sm btn-dark float-right" (click)="createRelation(relation)">
+                      <span aria-hidden="true">Agregar</span>
+                    </button>
+                    <br>
+                    <button
+                      *ngIf="relationType.get(relation.userFriend.user)=='PENDING_TO_ME'"
+                      type="button" class="btn btn-sm btn-success float-left mt-1" (click)="acceptRelation(relation)">
+                      <span aria-hidden="true">Aceptar</span>
+                    </button>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+</section>

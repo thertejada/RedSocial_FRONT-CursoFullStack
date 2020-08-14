@@ -1,0 +1,21 @@
+<section class="container-fluid">
+  <div class="container" id="containerInfoUser">
+    <div class="jumbotron">
+      <div class="row">
+        <div class="col-12 col-md-3">
+          <img class="img-thumbnail" [src]="user|userImage" alt="Avatar"/>
+        </div>
+        <div class="col-12 col-md-6 text-center text-md-left">
+          <h6 class="display-3">{{user.name}}</h6>
+          <h6 class="display-4">{{user.surname}}</h6>
+        </div>
+        <div class="col-12 col-md-3 text-center">
+          <div class="container-score">
+            <span class="display-1">{{user.score}}</span><br>
+            <span class="score-text">PUNTOS</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

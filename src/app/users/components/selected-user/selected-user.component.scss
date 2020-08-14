@@ -1,0 +1,77 @@
+@import "../../../shared/colors";
+
+#containerUsersSelected {
+  border: 2px solid $greenLight;
+  border-radius: 12px;
+  background-color: white;
+  opacity: 0;
+  transition: opacity 1s ease-out;
+
+  .no-user {
+    font-style: italic;
+    font-size: 0.9em;
+  }
+
+  .container-header {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    background-color: $greenLight;
+    background-size: cover;
+    height: 135px;
+
+    span{
+      color: white;
+      padding: 2px 8px;
+      font-size: 1.1em;
+    }
+
+    .container-img{
+      width: 50%;
+      margin: 0 auto;
+    }
+  }
+
+  .img-thumbnail {
+    background-color: white;
+    border-radius: 100px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 10em;
+    width: auto;
+
+    position: relative;
+    top: 25px;
+  }
+
+  .row{
+    padding-top: 3em!important;
+    text-align: center;
+
+    img{
+      height: 2em;
+      width: auto;
+    }
+  }
+
+  .name{
+    text-align: center;
+    font-size: 1.7em;
+    color: $greenLight;
+  }
+}
+
+#containerUsersSelected.active {
+  opacity: 1;
+}
+
+#containerUsersNotSelected {
+  margin-left: auto;
+  margin-right: auto;
+  width: 10em;
+  opacity: 50%;
+
+  @media (max-width: 992px) {
+    display: none;
+  }
+}

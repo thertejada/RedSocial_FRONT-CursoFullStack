@@ -1,0 +1,17 @@
+<section class="container-fluid pt-2">
+  <div class="container">
+    <users-search-bar (searchValue)="getSearchValueOfSearchBar($event)"></users-search-bar>
+    <div [ngClass]="{'active':notFoundUsersSearched}" class="alert alert-danger">
+      No hay usuarios que coincidan con la búsqueda
+    </div>
+    <div class="row mt-2">
+      <div class="col-12 col-lg-5">
+        <users-friends-list (resetInputSearchValue)="resetSearchInput($event)"
+                            (eventClickUserRelation)="eventClickUserRelation($event)"></users-friends-list>
+      </div>
+      <div class="col-12 col-lg-7 mb-2">
+        <users-selected-user (eventOnActionClick)="eventOnActionClick($event)"></users-selected-user>
+      </div>
+    </div>
+  </div>
+</section>

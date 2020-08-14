@@ -1,0 +1,9 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~font-awesome/css/font-awesome.css";
+@import "app/shared/colors";
+
+body {
+  // Es necesario establecer un padding ya que la navbar está fixed-top
+  padding-top: 3.9em;
+  background-color: $greenFullDark;
+}

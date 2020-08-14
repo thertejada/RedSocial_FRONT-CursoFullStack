@@ -1,0 +1,53 @@
+@import "../../../shared/colors";
+
+#containerEventInfo {
+  transition: opacity 0.5s ease-out;
+  opacity: 0;
+
+  .card {
+    background-color: white;
+    border: 2px solid $greenLight;
+    border-radius: 12px;
+    padding: 10px;
+
+    #desc {
+      white-space: pre-wrap;
+      width: 100%;
+      resize: none;
+      border: 0;
+      padding: 0;
+    }
+
+    img {
+      width: 2em;
+      height: 2em;
+    }
+
+    .card-user {
+      border: 1.4px solid $greenLight;
+      background-color: $semiWhite;
+
+      img {
+        width: 3em;
+        height: 3em;
+      }
+    }
+
+  }
+}
+
+#containerEventInfo.active {
+  opacity: 1;
+}
+
+#containerEventInfoNotSelected {
+  padding-top: 100px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 10em;
+  opacity: 50%;
+
+  @media (max-width: 575.98px) {
+    display: none;
+  }
+}

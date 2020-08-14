@@ -1,0 +1,12 @@
+<section class="container col-12 col-lg-10 col-sm-8 mb-2">
+  <form #formMessage="ngForm" (ngSubmit)="addMessage(newMessage)">
+    <div class="form-group">
+    <textarea class="form-control" maxlength="255"
+              placeholder="Escríbe bien lo que piensas {{user.name}}, no lo podrás eliminar..." rows="3"
+              [(ngModel)]="newMessage.content" name="content" #contentModel="ngModel" required></textarea>
+    </div>
+    <button type="submit" [ngClass]="{'hvr-bounce-to-right' : formMessage.valid}" id="bounce-to-right"
+            [disabled]="formMessage.invalid" class="btn">Publicar
+    </button>
+  </form>
+</section>

@@ -1,0 +1,71 @@
+@import "../colors";
+
+nav {
+  background-color: $greenBlack;
+
+  .collapse-link{
+    color: white;
+    font-size: 1.2em;
+  }
+
+  img {
+    margin-right: 0.5em;
+    max-width: 4em;
+    max-height: 3em;
+  }
+
+  .navbar-nav {
+    img {
+      width: 1.3em;
+      height: 100%;
+    }
+
+    a {
+      font-size: 0.9em;
+      font-weight: bold;
+      color: white !important;
+
+      vertical-align: middle;
+      -webkit-transform: perspective(1px) translateZ(0);
+      transform: perspective(1px) translateZ(0);
+      box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+      position: relative;
+      -webkit-transition-duration: 0.3s;
+      transition-duration: 0.3s;
+      -webkit-transition-property: transform;
+      transition-property: transform;
+    }
+
+    .a:before {
+      pointer-events: none;
+      position: absolute;
+      z-index: -1;
+      content: '';
+      top: 100%;
+      left: 5%;
+      height: 10px;
+      width: 90%;
+      opacity: 0;
+      background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 80%);
+      -webkit-transition-duration: 0.3s;
+      transition-duration: 0.3s;
+      -webkit-transition-property: transform, opacity;
+      transition-property: transform, opacity;
+    }
+
+    a:hover, .a:focus, a:active {
+      -webkit-transform: translateY(-5px);
+      transform: translateY(-5px);
+    }
+
+    a:hover:before, a:focus:before, a:active:before {
+      opacity: 1;
+      -webkit-transform: translateY(5px);
+      transform: translateY(5px);
+    }
+
+    .selected {
+      color: $greenLight2 !important;
+    }
+  }
+}

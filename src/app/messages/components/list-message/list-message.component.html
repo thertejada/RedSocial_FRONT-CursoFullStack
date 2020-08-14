@@ -1,0 +1,55 @@
+<section class="mb-2 pl-1 pl-md-4 pr-1 pr-md-4" id="containerMessagetList">
+  <div *ngIf="totalMessages==undefined || totalMessages.length==0">
+    <h6 class="text-center pt-3">No hay publicaciones para mostrar</h6>
+  </div>
+  <div *ngIf="totalMessages!=undefined && totalMessages.length!=0">
+    <article class="card col-12 mb-2" *ngFor="let message of totalMessages">
+      <div class="row card-body d-flex">
+        <div class="col-2 col-lg-2 col-md-2 col-sm-2 foto pt-1">
+          <img class="img-fluid" [src]="message.user | userImage" alt="Avatar">
+        </div>
+        <div class="col-10 col-lg-10 col-md-10 col-sm-10 d-flex flex-column justify-content-between">
+          <div class="texto text-wrap">
+            <span id="fecha" class="float-right">{{message.publishDate|fechaMessage}}</span>
+            <header><h5>{{message.user.name}} {{message.user.surname}}</h5></header>
+            <h6 id="descripcion">{{message.content}}</h6>
+          </div>
+
+          <section class="row reactions">
+            <div class="col-1 reactions">
+              <input type="image" src="./assets/like.svg" alt="like" class="mr-1 reaction-default"
+                     [hidden]="message.myReaction=='LIKE'"
+                     [disabled]="user.id == message.user.id" (click)="postLike(message)"/>
+              <input type="image" src="./assets/like-me.svg" alt="like" class="mr-1"
+                     [hidden]="message.myReaction!='LIKE'"
+                     [disabled]="user.id == message.user.id" (click)="postLike(message)"/>
+              {{totalReactionLike.get(message.id)}}
+            </div>
+            <div class="col-1 reactions">
+              <input type="image" src="./assets/love.svg" alt="love" class="reaction-default"
+                     [hidden]="message.myReaction=='LOVE'"
+                     [disabled]="user.id == message.user.id" (click)="postLove(message)"/>
+              <input type="image" src="./assets/love-me.svg" alt="love"
+                     [hidden]="message.myReaction!='LOVE'"
+                     [disabled]="user.id == message.user.id" (click)="postLove(message)"/>
+              {{totalReactionLove.get(message.id)}}
+            </div>
+            <div class="col-1 reactions">
+              <input type="image" src="./assets/hate.svg" alt="hate" class="reaction-default"
+                     [hidden]="message.myReaction=='HATE'"
+                     [disabled]="user.id == message.user.id" (click)="postHate(message)"/>
+              <input type="image" src="./assets/hate-me.svg" alt="hate"
+                     [hidden]="message.myReaction!='HATE'"
+                     [disabled]="user.id == message.user.id" (click)="postHate(message)"/>
+              {{totalReactionHate.get(message.id)}}
+            </div>
+          </section>
+        </div>
+
+        <div hidden class="col" *ngIf="user.id == message.user.id">
+          <button class="btn btn-danger" (click)="deleteMessageUser(message)">Delete</button>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
