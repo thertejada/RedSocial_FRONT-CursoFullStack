@@ -1,5 +1,5 @@
 # Proyecto final curso EOI Full Stack - Parte Front
-El proyecto se trata de una mini red social.
+El proyecto se trata de una mini red social.<br>
 La parte front se ha desarrollado en Angular (v10).
 
 ![Gif 1](https://media.giphy.com/media/S6kJrczelsNqL4z4GB/giphy.gif)
@@ -14,5 +14,5 @@ La parte front se ha desarrollado en Angular (v10).
 
 ***
 ## Autores ✒️
-Alejandro Tejada Rodríguez
+Alejandro Tejada Rodríguez<br>
 Jorge Jaén Ferrer
